@@ -1,6 +1,4 @@
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import projectConfig from '../project';
 
 const webpackConfig = {
@@ -29,16 +27,7 @@ const webpackConfig = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: `${projectConfig.srcPath}/index.html`,
-    //   filename: 'index.html',
-    //   hash: true,
-    //   inject: 'body'
-    // })
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new ExtractTextWebpackPlugin('style.css')
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
   resolve: {
     extensions: ['', '.js']

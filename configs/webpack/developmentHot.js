@@ -9,9 +9,4 @@ webpackConfig.entry.app.push(
   'webpack/hot/dev-server'
 );
 
-webpackConfig.plugins.push(
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin()
-);
-
 export default webpackConfig;

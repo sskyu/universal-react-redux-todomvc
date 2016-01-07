@@ -22,12 +22,7 @@ export default class Footer extends Component {
       <footer className="footer">
         {this._renderTodoCount()}
         <ul className="filters">
-          {/*this._renderFilters()*/}
-          {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
-            <li key={filter}>
-              {this._renderFilterLink()}
-            </li>
-          )}
+          {this._renderFilters()}
         </ul>
         {this._renderClearButton()}
       </footer>
@@ -49,9 +44,11 @@ export default class Footer extends Component {
     const filters = [SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED];
 
     return filters.map(filter => {
-      <li key={filter}>
-        {this._renderFilterLink(filter)}
-      </li>
+      return (
+        <li key={filter}>
+          {this._renderFilterLink(filter)}
+        </li>
+      );
     });
   }
 

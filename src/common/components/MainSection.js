@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
-import { SHOW_ALL, SHOW_COMPLETE, SHOW_ACTIVE } from '../constants/todoFilters';
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../constants/todoFilters';
 
 const TODO_FILTERS = {
   [SHOW_ALL]      : () => true,
   [SHOW_ACTIVE]   : todo => !todo.completed,
-  [SHOW_COMPLETE] : todo => todo.completed
+  [SHOW_COMPLETED] : todo => todo.completed
 };
 
 export default class MainSection extends Component {

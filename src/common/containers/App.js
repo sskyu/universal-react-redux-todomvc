@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     const { todos, actions } = this.props;
     return (
-      <div>
+      <div className="todoapp">
         <Header addTodo={actions.addTodo} />
         <MainSection todos={todos} actions={actions} />
       </div>

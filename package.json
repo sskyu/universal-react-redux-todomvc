@@ -15,6 +15,7 @@
     "classnames": "^2.2.1",
     "express": "^4.13.3",
     "history": "^1.17.0",
+    "hogan-express": "^0.5.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.6",

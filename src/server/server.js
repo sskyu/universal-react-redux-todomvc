@@ -1,5 +1,6 @@
 import path from 'path';
 import Express from 'express';
+import hogan from 'hogan-express';
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -17,9 +18,13 @@ import routes from '../common/routes';
 import { fetchTodos } from '../common/api/todos';
 
 const app = new Express();
-const port = 8500;
+const port = process.env.PORT || 8500;
 
 const compiler = webpack(webpackConfig);
+
+app.engine('html', hogan);
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, './views'));
 
 app.use(Express.static(`${__dirname}/public`));
 
@@ -53,28 +58,12 @@ function handleRender(req, res) {
 
       const finalState = store.getState();
 
-      res.status(200).send(renderFullPage(html, finalState));
+      res.status(200).render('index', {
+        html,
+        initialState: JSON.stringify(finalState)
+      });
     });
   });
-}
-
-function renderFullPage(html, initialState) {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>Redux Universal Example</title>
-        <link rel="stylesheet" href="/stylesheets/style.css">
-      </head>
-      <body>
-        <div id="root">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-        </script>
-        <script src="/static/bundle.js"></script>
-      </body>
-    </html>
-  `;
 }
 
 app.listen(port, (error) => {

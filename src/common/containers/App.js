@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/todos';
+// import style from '../styles/containers/app.scss';
 
 function mapStateToProps(state) {
   return {

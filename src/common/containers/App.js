@@ -26,8 +26,9 @@ class App extends Component {
 
   render() {
     const { todos, actions } = this.props;
+    const style = require('../styles/containers/app.scss');
     return (
-      <div className="todoapp">
+      <div className={style.todoapp}>
         <Header addTodo={actions.addTodo} />
         <MainSection todos={todos} actions={actions} />
       </div>

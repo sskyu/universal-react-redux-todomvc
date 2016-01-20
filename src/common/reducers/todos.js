@@ -7,7 +7,7 @@ import {
   CLEAR_COMPLETED
 } from '../constants/actionTypes';
 
-const initialState = [
+export const initialState = [
   {
     id: 0,
     completed: true,
@@ -25,7 +25,7 @@ export default function todos(state = initialState, action) {
           text: action.text
         },
         ...state
-      ]
+      ];
 
     case DELETE_TODO:
       return state.filter(todo => todo.id !== action.id);

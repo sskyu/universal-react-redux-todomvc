@@ -8,7 +8,7 @@ const mockdata = [
     id: 1,
     completed: false,
     text: 'hoge'
-  },
+  }
 ];
 
 export function fetchTodos(callback) {

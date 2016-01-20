@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__DEVELOPMENT__": true
+  },
+  "rules": {
+    "comma-dangle": [1, "never"],
+    "eqeqeq": [2, "smart"],
+    "func-names": 0,
+    "key-spacing": 0,
+    "space-before-function-paren": [2, { "anonymous": "always", "named": "never" }],
+    "no-else-return": 0,
+    "no-multi-spaces": 0,
+    "quotes": [2, "single"],
+    "one-var": 0
+  },
+  "plugins": [
+    "react"
+  ],
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "jsx": true
+  }
+}

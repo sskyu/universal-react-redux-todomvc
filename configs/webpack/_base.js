@@ -4,14 +4,13 @@ import projectConfig from '../project';
 const webpackConfig = {
   entry: {
     app: [
-      'webpack-hot-middleware/client',
       `${projectConfig.clientPath}/index.js`
     ]
   },
   output: {
     path: projectConfig.distPath,
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
   module: {
     loaders: [
@@ -19,15 +18,18 @@ const webpackConfig = {
         test: /\.js$/,
         loaders: ['babel'],
         exclude: /node_mobules/
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'raw']
       }
     ]
   },
+  progress: true,
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DISABLE_SSR__: false,
+      __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
+    }),
   ],
   resolve: {
     extensions: ['', '.js']

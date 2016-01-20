@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../constants/todoFilters';
+import style from '../styles/components/mainSection.scss';
 
 const TODO_FILTERS = {
   [SHOW_ALL]      : () => true,
@@ -28,9 +29,9 @@ export default class MainSection extends Component {
     const completedCount = this._getCompletedCount();
 
     return (
-      <section className="main">
+      <section className={style.main}>
         {this._renderToggleAll(completedCount)}
-        <ul className="todo-list">
+        <ul className={style.todoList}>
           {filteredTodos.map(todo =>
             <TodoItem key={todo.id} todo={todo} {...actions} />
           )}
@@ -45,7 +46,7 @@ export default class MainSection extends Component {
     if (todos.length) {
       return (
         <input
-          className="toggle-all"
+          className={style.toggleAll}
           type="checkbox"
           checked={completedCount === todos.length}
           onChange={actions.completeAll}

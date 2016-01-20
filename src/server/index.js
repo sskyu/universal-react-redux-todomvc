@@ -9,12 +9,6 @@ global.__SERVER__ = true;
 global.__DISABLE_SSR__ = false;
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
-console.log();
-console.log();
-console.log('__DEVELOPMENT__', __DEVELOPMENT__);
-console.log();
-console.log();
-
 if (__DEVELOPMENT__) {
   if (!require('piping')({
     hook: true,

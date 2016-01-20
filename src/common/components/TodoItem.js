@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
+import style from '../styles/components/todoItem.scss';
 
 export default class TodoItem extends Component {
   static propTypes = {
@@ -19,10 +19,10 @@ export default class TodoItem extends Component {
 
   render() {
     const { todo } = this.props;
-    const className = classnames({
-      'completed': todo.completed,
-      'editing': this.state.editing
-    });
+    const className = [
+      todo.completed ? style.completed : '',
+      this.state.editing ? style.editing : ''
+    ].join(' ');
 
     return (
       <li className={className}>
@@ -45,11 +45,12 @@ export default class TodoItem extends Component {
 
   _renderViewElement() {
     const { todo, completeTodo, deleteTodo } = this.props;
+    const className = this.state.editing ? style.displayNone : '';
 
     return (
-      <div className="view">
+      <div className={className}>
         <input
-          className="toggle"
+          className={style.toggle}
           type="checkbox"
           checked={todo.completed}
           onChange={() => completeTodo(todo.id)}
@@ -58,7 +59,7 @@ export default class TodoItem extends Component {
           {todo.text}
         </label>
         <button
-          className="destroy"
+          className={style.destroy}
           onClick={() => deleteTodo(todo.id)}
         />
       </div>

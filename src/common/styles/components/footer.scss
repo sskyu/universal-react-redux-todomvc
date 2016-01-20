@@ -60,8 +60,16 @@
   }
 }
 
-.clear-completed,
-html .clear-completed:active {
+.filterSelected {
+	border-color: rgba(175, 47, 47, 0.2);
+	&:hover {
+		border-color: rgba(175, 47, 47, 0.1);
+	}
+}
+
+
+.clearCompleted,
+.clearCompleted:active {
 	float: right;
 	position: relative;
 	line-height: 20px;
@@ -69,7 +77,7 @@ html .clear-completed:active {
 	cursor: pointer;
 }
 
-.clear-completed:hover {
+.clearCompleted:hover {
 	text-decoration: underline;
 }
 

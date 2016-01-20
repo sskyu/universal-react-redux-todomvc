@@ -19,9 +19,9 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <footer className="footer">
+      <footer className={style.footer}>
         {this._renderTodoCount()}
-        <ul className="filters">
+        <ul className={style.filters}>
           {this._renderFilters()}
         </ul>
         {this._renderClearButton()}
@@ -34,7 +34,7 @@ export default class Footer extends Component {
     const itemWord = activeCount === 1 ? 'item' : 'items';
 
     return (
-      <span className="todo-count">
+      <span className={style.todoCount}>
         <strong>{activeCount || 'No'}</strong> {itemWord} left
       </span>
     );
@@ -55,9 +55,7 @@ export default class Footer extends Component {
   _renderFilterLink(filter) {
     const title = FILTER_TITLES[filter];
     const { filter: selectedFilter, onShow } = this.props;
-    const className = classnames({
-      'selected': filter === selectedFilter
-    });
+    const className = filter === selectedFilter ? style.filterSelected : '';
 
     return (
       <a
@@ -75,7 +73,7 @@ export default class Footer extends Component {
     if (completedCount) {
       return (
         <button
-          className="clear-completed"
+          className={style.clearCompleted}
           onClick={onClearCompleted}
         >
           Clear completed

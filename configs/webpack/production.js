@@ -17,7 +17,9 @@ webpackConfig.module.loaders.push(
 
 webpackConfig.plugins.push(
   new CleanPlugin(['dist'], {
-    root: projectConfig.rootPath
+    root: projectConfig.rootPath,
+    verbose: true,
+    dry: false
   }),
 
   // css files from the extract-text-plugin loader

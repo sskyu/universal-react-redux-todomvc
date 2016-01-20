@@ -4,7 +4,6 @@ import projectConfig from '../project';
 const webpackConfig = {
   entry: {
     app: [
-      'webpack-hot-middleware/client',
       `${projectConfig.clientPath}/index.js`
     ]
   },

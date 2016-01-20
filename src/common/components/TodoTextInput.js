@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import style from '../styles/components/todoTextInput.scss';
 
 export default class TodoTextInput extends Component {
   static propTypes = {
@@ -18,10 +18,10 @@ export default class TodoTextInput extends Component {
   }
 
   render() {
-    const className = classnames({
-      'edit': this.props.editing,
-      'new-todo': this.props.newTodo
-    });
+    const className = [
+      this.props.editing ? style.edit : '',
+      this.props.newTodo ? style.newTodo : ''
+    ].join(' ');
 
     return (
       <input

@@ -1,3 +1,4 @@
 require('babel-core/register');
 
-module.exports = require('./configs/webpack/development');
+var env = process.env.NODE_ENV || 'development';
+module.exports = require('./configs/webpack/' + env);

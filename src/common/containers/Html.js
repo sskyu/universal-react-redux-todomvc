@@ -13,14 +13,12 @@ export default class Html extends Component {
     const { assets, component, store } = this.props;
     const content = component ? renderToString(component) : '';
 
-    console.log(assets.styles);
-
     return (
       <html>
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {this.renderStyleSheets(assets.styles)}
-          <link href="/stylesheets/style.css" key="style" rel="stylesheet" type="text/css" />
+          {/*<link href="/stylesheets/style.css" key="style" rel="stylesheet" type="text/css" />*/}
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
@@ -35,16 +33,17 @@ export default class Html extends Component {
   }
 
   renderStyleSheets(styles) {
-    const styleSheets = Object.keys(styles).map((style, key) => {
-      <link
-        href={styles[style]}
-        key={key}
-        media="screen, projection"
-        rel="stylesheet"
-        type="text/css"
-        charSet="UTF-8"
-      />
+    return Object.keys(styles).map((key, i) => {
+      return (
+        <link
+          href={styles[key]}
+          key={i}
+          media="screen, projection"
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+        />
+      );
     });
-    return styleSheets;
   }
 }

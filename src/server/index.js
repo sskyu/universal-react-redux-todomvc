@@ -7,7 +7,7 @@ var webpackIsomorphicToolsConfig = require('../../configs/webpack/webpackIsomorp
 
 global.__CLIENT__ = false;
 global.__SERVER__ = true;
-global.__DISABLE_SSR = false;
+global.__DISABLE_SSR__ = false;
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
 var result;
@@ -22,7 +22,7 @@ if (__DEVELOPMENT__) {
 
 function setupIsomorphicTools() {
   global.webpackIsomorphicTools = new WebpackIsomorphicTools(webpackIsomorphicToolsConfig)
-    .development()
+    .development(__DEVELOPMENT__)
     .server(projectConfig.projectRootPath, function () {
       require('./server');
     });

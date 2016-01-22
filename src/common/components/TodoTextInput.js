@@ -21,7 +21,7 @@ export default class TodoTextInput extends Component {
     const className = [
       this.props.editing ? style.edit : '',
       this.props.newTodo ? style.newTodo : ''
-    ].join(' ');
+    ].join(' ').trim();
 
     return (
       <input

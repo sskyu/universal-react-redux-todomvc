@@ -22,7 +22,7 @@ export default class TodoItem extends Component {
     const className = [
       todo.completed ? style.completed : '',
       this.state.editing ? style.editing : ''
-    ].join(' ');
+    ].join(' ').trim();
 
     return (
       <li className={className}>

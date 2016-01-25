@@ -7,7 +7,7 @@ import {
   CLEAR_COMPLETED
 } from '../constants/actionTypes';
 
-const initialState = [
+export const initialState = [
   {
     id: 0,
     completed: true,
@@ -25,7 +25,7 @@ export default function todos(state = initialState, action) {
           text: action.text
         },
         ...state
-      ]
+      ];
 
     case DELETE_TODO:
       return state.filter(todo => todo.id !== action.id);
@@ -51,7 +51,7 @@ export default function todos(state = initialState, action) {
     case COMPLETE_ALL:
       const areAllMarked = state.every(todo => todo.completed);
       return state.map(todo => {
-        return Object.assign({}, todo, { complated: !areAllMarked })
+        return Object.assign({}, todo, { completed: !areAllMarked })
       });
 
     case CLEAR_COMPLETED:

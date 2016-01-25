@@ -1,0 +1,4 @@
+--ui bdd
+--reporter spec
+--require test/setup.js
+--compilers js:espower-babel/guess

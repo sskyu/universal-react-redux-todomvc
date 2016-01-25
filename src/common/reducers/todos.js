@@ -51,7 +51,7 @@ export default function todos(state = initialState, action) {
     case COMPLETE_ALL:
       const areAllMarked = state.every(todo => todo.completed);
       return state.map(todo => {
-        return Object.assign({}, todo, { complated: !areAllMarked })
+        return Object.assign({}, todo, { completed: !areAllMarked })
       });
 
     case CLEAR_COMPLETED:

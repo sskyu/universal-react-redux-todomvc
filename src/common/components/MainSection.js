@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import TodoItem from './TodoItem';
 import Footer from './Footer';
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../constants/todoFilters';
-import style from '../styles/components/mainSection.scss';
+import style from '../styles/components/mainSection.css';
 
 const TODO_FILTERS = {
   [SHOW_ALL]      : () => true,

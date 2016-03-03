@@ -10,27 +10,18 @@ const webpackConfig = {
   output: {
     path: projectConfig.distPath,
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/'
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel'],
-        exclude: /node_mobules/
-      }
-    ]
+    loaders: []
   },
-  progress: true,
-  plugins: [
-    new webpack.DefinePlugin({
-      __CLIENT__: true,
-      __SERVER__: false,
-      __DEVELOPMENT__: true,
-      __DISABLE_SSR__: false,
-      __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
-    }),
+  postcss: (webpack) => [
+    require('postcss-import')({ addDependencyTo: webpack }),
+    require('precss'),
+    require('postcss-cssnext')
   ],
+  progress: true,
+  plugins: [],
   resolve: {
     extensions: ['', '.js']
   }

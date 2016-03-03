@@ -1,29 +1,26 @@
-require('babel-core/register');
+import path from 'path';
+import Express from 'express';
 
-var piping = require('piping');
-var projectConfig = require('../../configs/project').default;
-var WebpackIsomorphicTools = require('webpack-isomorphic-tools');
-var webpackIsomorphicToolsConfig = require('../../configs/webpack/webpackIsomorphicToolsConfig').default;
+import webpack from 'webpack';
+import webpackConfig from '../../webpack.config';
+import projectConfig from '../../configs/project';
 
-global.__CLIENT__ = false;
-global.__SERVER__ = true;
-global.__DISABLE_SSR__ = false;
-global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
+import routeHandler from './routeHandler';
 
-var result;
-if (__DEVELOPMENT__) {
-  result = piping({ hook: true, ignore: /(\/\.|~$|\.json|\.scss$)/i });
-  if (result) {
-    setupIsomorphicTools();
+const app = new Express();
+const host = projectConfig.prodServer.host;
+const port = process.env.PORT || projectConfig.prodServer.port;
+
+app.use(Express.static(`${__dirname}/../../dist`));
+
+const router = Express.Router();
+
+app.use(routeHandler);
+
+app.listen(port, (error) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.info(`==> 🌎  Listening on port ${port}. Open up http://${host}:${port}/ in your browser.`);
   }
-} else {
-  setupIsomorphicTools();
-}
-
-function setupIsomorphicTools() {
-  global.webpackIsomorphicTools = new WebpackIsomorphicTools(webpackIsomorphicToolsConfig)
-    .development(__DEVELOPMENT__)
-    .server(projectConfig.projectRootPath, function () {
-      require('./server');
-    });
-}
+});

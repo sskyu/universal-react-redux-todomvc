@@ -7,7 +7,7 @@ import TodoItem from '../../src/common/components/TodoItem';
 import Footer from '../../src/common/components/Footer';
 import * as actions from '../../src/common/actions/todos';
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from '../../src/common/constants/todoFilters';
-import style from '../../src/common/styles/components/mainSection';
+import style from '../../src/common/styles/components/mainSection.css';
 
 function setup(propOverrides) {
   const spyActions = {};

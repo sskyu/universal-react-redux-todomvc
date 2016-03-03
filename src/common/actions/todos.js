@@ -1,4 +1,16 @@
 import * as types from '../constants/actionTypes';
+import { fetchTodos as fetchTodosApi } from '../api/todos';
+
+export function fetchTodos() {
+  return dispatch => fetchTodosApi()
+    .then(todos => dispatch({
+      type: types.FETCH_TODOS_SUCCESS,
+      todos
+    }))
+    .catch(e => dispatch({
+      type: types.FETCH_TODOS_FAILURE
+    }));
+}
 
 export function addTodo(text) {
   return {

@@ -1,18 +1,22 @@
 const mockdata = [
   {
-    id: 0,
-    completed: true,
+    id: 1,
+    completed: false,
     text: 'Use Redux'
   },
   {
-    id: 1,
-    completed: false,
+    id: 2,
+    completed: true,
     text: 'hoge'
   }
 ];
 
-export function fetchTodos(callback) {
-  setTimeout(() => {
-    callback(mockdata);
-  }, 500);
+/**
+ * fetch todos
+ * @return {Promise}
+ */
+export function fetchTodos() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(mockdata), 500);
+  });
 }

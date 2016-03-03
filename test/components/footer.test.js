@@ -5,7 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import { getTextContent } from '../util';
 import Footer from '../../src/common/components/Footer';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../src/common/constants/todoFilters';
-import style from '../../src/common/styles/components/footer.scss';
+import style from '../../src/common/styles/components/footer.css';
 
 function setup(propOverrides) {
   const props = Object.assign({

@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import TodoTextInput from '../../src/common/components/TodoTextInput';
-import style from '../../src/common/styles/components/todoTextInput.scss';
+import style from '../../src/common/styles/components/todoTextInput.css';
 
 function setup(propOverrides) {
   const props = Object.assign({

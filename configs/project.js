@@ -9,7 +9,11 @@ const serverPath      = path.resolve(srcPath, 'server');
 const devServer = {
   host: 'localhost',
   port: 8999
-}
+};
+const prodServer = {
+  host: 'localhost',
+  port: 8989
+};
 
 export default {
   projectRootPath,
@@ -17,5 +21,6 @@ export default {
   clientPath,
   serverPath,
   distPath,
-  devServer
+  devServer,
+  prodServer
 };

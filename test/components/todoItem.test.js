@@ -4,7 +4,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import TodoItem from '../../src/common/components/TodoItem';
 import TodoTextInput from '../../src/common/components/TodoTextInput';
-import style from '../../src/common/styles/components/todoItem.scss';
+import style from '../../src/common/styles/components/todoItem.css';
 
 function setup(editing = false) {
   const props = {

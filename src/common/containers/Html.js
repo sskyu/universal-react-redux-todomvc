@@ -4,21 +4,19 @@ import serialize from 'serialize-javascript';
 
 export default class Html extends Component {
   static propTypes = {
-    assets: PropTypes.object,
-    component: PropTypes.node,
-    store: PropTypes.object
+    component: PropTypes.node.isRequired,
+    store: PropTypes.object.isRequired
   };
 
   render() {
-    const { assets, component, store } = this.props;
+    const { component, store } = this.props;
     const content = component ? renderToString(component) : '';
 
     return (
       <html>
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          {this.renderStyleSheets(assets.styles)}
-          {/*<link href="/stylesheets/style.css" key="style" rel="stylesheet" type="text/css" />*/}
+          {this.renderStyleSheet()}
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
@@ -26,24 +24,25 @@ export default class Html extends Component {
             dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${serialize(store.getState())};` }}
             charSet="UTF-8"
           />
-          <script src={assets.javascript.app} charSet="UTF-8" />
+          <script src='bundle.js' charSet="UTF-8" />
         </body>
       </html>
     );
   }
 
-  renderStyleSheets(styles) {
-    return Object.keys(styles).map((key, i) => {
-      return (
-        <link
-          href={styles[key]}
-          key={i}
-          media="screen, projection"
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-        />
-      );
-    });
+  renderStyleSheet() {
+    if (__DEVELOPMENT__) {
+      return;
+    }
+
+    return (
+      <link
+        href='app.css'
+        media="screen, projection"
+        rel="stylesheet"
+        type="text/css"
+        charSet="UTF-8"
+      />
+    );
   }
 }

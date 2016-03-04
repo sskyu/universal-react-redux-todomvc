@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/todos';
-import style from '../styles/containers/app.scss';
+import style from '../styles/containers/app.css';
 
 function mapStateToProps(state) {
   return {
@@ -24,9 +24,16 @@ class App extends Component {
     actions: PropTypes.object.isRequired
   };
 
+  componentWillMount() {
+    const { fetchTodos } = this.props.actions;
+
+    if (__CLIENT__) {
+      fetchTodos();
+    }
+  }
+
   render() {
     const { todos, actions } = this.props;
-    // const style = require('../styles/containers/app.scss');
     return (
       <div className={style.todoapp}>
         <Header addTodo={actions.addTodo} />

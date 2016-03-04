@@ -6,11 +6,7 @@ describe('todos reducer', () => {
   describe('initial state', () => {
     it('should handle initial state', () => {
       const result = todos(undefined, {});
-      assert.deepEqual(result, [{
-        id: 0,
-        completed: true,
-        text: 'Use Redux'
-      }]);
+      assert.deepEqual(result, []);
     });
   });
 

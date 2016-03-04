@@ -3,13 +3,13 @@
 ## setup
 ```sh
 $ npm install
-$ npm start # open http://localhost:8500 your browser
+$ npm start # open http://localhost:8999 your browser
 ```
 
 ## production build
 ```sh
 $ npm run start:production
-# open http://localhost:8500 , server side rendering is enabled
+# open http://localhost:8989 , server side rendering is enabled
 ```
 
 ## test

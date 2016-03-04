@@ -54,9 +54,7 @@ label[for='toggle-all'] {
 	height: 34px;
 	text-align: center;
 	border: none; /* Mobile Safari */
-	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
-	-webkit-appearance: none;
 	appearance: none;
 
 	&:before {
